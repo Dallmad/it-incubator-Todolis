@@ -9,6 +9,8 @@ type PropsType={
     ogurcy?:string
     pom?:string
     arr:Array<inArray>
+
+
 }
 
 
