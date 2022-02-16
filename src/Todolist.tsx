@@ -5,6 +5,8 @@ import {FilterValuesType, TaskType} from "./App";
 import Task from "./Task";
 import {AddItemForm} from "./components/AddItemForm";
 import {ButtonsBlock} from "./ButtonsBlock";
+import {List} from "@material-ui/core";
+
 
 type TodoListPropsType = {
     id: string
@@ -56,7 +58,7 @@ const changeTodolistTitle = (title: string) => {
         props.changeTodolistTitle(title,props.id)
 }
     return (
-        <div>
+        <div className='todolist'>
             <TodoListHeader
                 title={props.title}
                 removeTodoList={removeTodoList}
@@ -65,9 +67,9 @@ const changeTodolistTitle = (title: string) => {
 
             <AddItemForm addItem={addTask}/>
 
-            <ul>
+            <List>
                 {tasksComponents}
-            </ul>
+            </List>
 
             <ButtonsBlock filter={props.filter} setFilterValue={setFilterValue}/>
         </div>

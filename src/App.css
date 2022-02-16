@@ -1,19 +1,25 @@
-.App {
+/*.App {
   padding: 30px;
   display: flex;
+  flex-wrap: wrap;
+
 }
 
 .App > div {
-  margin-right: 50px;
-}
+  margin-right: 20px;
+}*/
 .is-done {
   opacity: 0.5;
 }
-.active {
+/*.active {
   background-color: cadetblue;
-}
-.error {
+}*/
+/*.error {
   background-color: lightpink ;
   border: 2px solid red;
   outline: transparent;
+}*/
+.todolist {
+  width: 300px;
+
 }
