@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import './App.css';
-import {TodoList} from "./Todolist";
-import {v1} from "uuid";
-import {AddItemForm} from "./components/AddItemForm";
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
-import {Menu} from "@material-ui/icons";
-// C
-// R
-// U
-// D
+import {TodoList} from './Todolist';
+import {v1} from 'uuid';
+import {AddItemForm} from './components/AddItemForm';
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@material-ui/core';
+import {Menu} from '@material-ui/icons';
+
 export type TaskType = {
     id: string
     title: string
@@ -22,48 +19,41 @@ export type TodoListType = {
 
 }
 
-type TaskStateType = {
+export type TaskStateType = {
     [todoListID: string]: Array<TaskType>
 }
 
-export type FilterValuesType = "all" | "active" | "completed"
+export type FilterValuesType = 'all' | 'active' | 'completed'
 
 const App = () => {
-    // BLL:
     const todoListID_1 = v1()
     const todoListID_2 = v1()
     const todoListID_3 = v1()
 
     const [todoLists, setTodoLists] = useState<Array<TodoListType>>([
-        {id: todoListID_1, title: "What to learn", filter: "all"},
-        {id: todoListID_2, title: "What to buy", filter: "all"},
-        {id: todoListID_3, title: "What to read", filter: "all"},
+        {id: todoListID_1, title: 'What to learn', filter: 'all'},
+        {id: todoListID_2, title: 'What to buy', filter: 'all'},
+        {id: todoListID_3, title: 'What to read', filter: 'all'},
     ])
     const [tasks, setTasks] = useState<TaskStateType>({
         [todoListID_1]: [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS/ES6", isDone: true},
-            {id: v1(), title: "REACT", isDone: true},
+            {id: v1(), title: 'HTML&CSS', isDone: true},
+            {id: v1(), title: 'JS/ES6', isDone: true},
+            {id: v1(), title: 'REACT', isDone: true},
         ],
         [todoListID_2]: [
-            {id: v1(), title: "MILK", isDone: true},
-            {id: v1(), title: "BREAD", isDone: false},
-            {id: v1(), title: "MEAT", isDone: true},
+            {id: v1(), title: 'MILK', isDone: true},
+            {id: v1(), title: 'BREAD', isDone: false},
+            {id: v1(), title: 'MEAT', isDone: true},
         ],
         [todoListID_3]: [
-            {id: v1(), title: "You dont now JS", isDone: true},
-            {id: v1(), title: "Understanding Redux", isDone: false},
-            {id: v1(), title: "How to learn React", isDone: false},
+            {id: v1(), title: 'You dont now JS', isDone: true},
+            {id: v1(), title: 'Understanding Redux', isDone: false},
+            {id: v1(), title: 'How to learn React', isDone: false},
         ],
     })
 
     const removeTask = (taskID: string, todoListID: string) => {
-        // const tasksFromTodoList = tasks[todoListID]
-        // const filteredTasks = tasksFromTodoList.filter(t => t.id !== taskID)
-        // const copyTasks = {...tasks}
-        // copyTasks[todoListID] = filteredTasks
-        // setTasks(copyTasks)
-
         setTasks({
             ...tasks,
             [todoListID]: tasks[todoListID].filter(t => t.id !== taskID)
@@ -71,12 +61,6 @@ const App = () => {
     }
     const addTask = (title: string, todoListID: string) => {
         const newTask: TaskType = {id: v1(), title, isDone: false}
-        // const tasksFromTodoList = tasks[todoListID]
-        // const upDatedTasks = [newTask, ...tasksFromTodoList]
-        // const copyTasks = {...tasks}
-        // copyTasks[todoListID] = upDatedTasks
-        // setTasks(copyTasks)
-
         setTasks({...tasks, [todoListID]: [newTask, ...tasks[todoListID]]})
     }
     const changeTaskTitle = (taskID: string, title: string, todoListID: string) => {
@@ -99,9 +83,9 @@ const App = () => {
     }
     const getTasksForRender = (todoList: TodoListType) => {
         switch (todoList.filter) {
-            case "active":
+            case 'active':
                 return tasks[todoList.id].filter(t => !t.isDone)
-            case "completed":
+            case 'completed':
                 return tasks[todoList.id].filter(t => t.isDone)
             default:
                 return tasks[todoList.id]
@@ -140,23 +124,23 @@ const App = () => {
         const tasksForRender = getTasksForRender(tl)
         return (
             <Grid item key={tl.id}>
-            <Paper elevation={10}
-                   style={{padding: '20px'}}>
-                <TodoList
-                    key={tl.id}
-                    id={tl.id}
-                    title={tl.title}
-                    tasks={tasksForRender}
-                    filter={tl.filter}
-                    removeTask={removeTask}
-                    changeFilter={changeTodolistFilter}
-                    addTask={addTask}
-                    removeTodoList={removeTodoList}
-                    changeTaskStatus={changeTaskStatus}
-                    changeTaskTitle={changeTaskTitle}
-                    changeTodolistTitle={changeTodolistTitle}
-                />
-            </Paper>
+                <Paper elevation={10}
+                       style={{padding: '20px'}}>
+                    <TodoList
+                        key={tl.id}
+                        id={tl.id}
+                        title={tl.title}
+                        tasks={tasksForRender}
+                        filter={tl.filter}
+                        removeTask={removeTask}
+                        changeFilter={changeTodolistFilter}
+                        addTask={addTask}
+                        removeTodoList={removeTodoList}
+                        changeTaskStatus={changeTaskStatus}
+                        changeTaskTitle={changeTaskTitle}
+                        changeTodolistTitle={changeTodolistTitle}
+                    />
+                </Paper>
             </Grid>
         )
     })
@@ -166,18 +150,18 @@ const App = () => {
 
         <div className="App">
             <AppBar position="static">
-                <Toolbar style={{justifyContent: "space-between"}}>
+                <Toolbar style={{justifyContent: 'space-between'}}>
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu/>
                     </IconButton>
                     <Typography variant="h6">
                         Todolists
                     </Typography>
-                    <Button color="inherit" variant={"outlined"}>Login</Button>
+                    <Button color="inherit" variant={'outlined'}>Login</Button>
                 </Toolbar>
             </AppBar>
             <Container fixed>
-                <Grid container style={{padding:'20px 0'}} justifyContent={'center'}>
+                <Grid container style={{padding: '20px 0'}} justifyContent={'center'}>
                     <AddItemForm addItem={addTodolist}/>
                 </Grid>
                 <Grid container spacing={6} justifyContent={'center'}>
