@@ -2,8 +2,9 @@ import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import {AddItemForm} from '../AddItemForm';
-import {action} from "@storybook/addon-actions";
+
 import {Task} from '../Task';
+import { action } from '@storybook/addon-actions';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
