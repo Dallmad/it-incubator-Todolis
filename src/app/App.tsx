@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './App.css'
 import { TodolistsList } from '../features/TodolistsList/TodolistsList'
 
@@ -12,9 +12,17 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Menu } from '@mui/icons-material';
+import {LinearProgress} from '@material-ui/core';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType, useAppSelector} from './store';
+import {RequestStatusType, setAppStatusAC} from './app-reducer';
+import {fetchTasksTC} from '../features/TodolistsList/tasks-reducer';
+import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar';
 
 
 function App() {
+
+    const status = useAppSelector<RequestStatusType>(state => state.app.status)
 
     return (
         <div className="App">
@@ -29,9 +37,14 @@ function App() {
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
+
+            {status==='loading' &&  <LinearProgress color='secondary'/>}
+
             <Container fixed>
                 <TodolistsList/>
             </Container>
+
+            <ErrorSnackbar/>
         </div>
     )
 }
