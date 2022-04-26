@@ -2,8 +2,7 @@ import React, {useCallback} from 'react'
 import {FilterValuesType} from './App'
 import {AddItemForm} from './AddItemForm'
 import {EditableSpan} from './EditableSpan'
-import {Button, IconButton} from '@material-ui/core'
-
+import {Button, IconButton} from '@mui/material'
 import {Task} from './Task'
 import {Delete} from '@mui/icons-material';
 
@@ -76,7 +75,7 @@ export const Todolist = React.memo(function (props: PropsType) {
         <div style={{paddingTop: '10px'}}>
             <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
                     onClick={onAllClickHandler}
-                    color={'default'}
+                    color={'secondary'}
             >All
             </Button>
             <Button variant={props.filter === 'active' ? 'outlined' : 'text'}
