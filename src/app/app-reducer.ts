@@ -22,20 +22,12 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
     }
 }
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
-export type InitialStateType = {
-    // происходит ли сейчас взаимодействие с сервером
-    status: RequestStatusType
-    // если ошибка какая-то глобальная произойдёт - мы запишем текст ошибки сюда
-    error: string | null
-    isInitialized: boolean
-}
-
+//action creators
 export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 export const setIsInitializedAC = (isInitialized: boolean) => ({type: 'APP/SET-IS-INITIALIZED', isInitialized} as const)
 
-//Thunk
+//thunks
 export const initializeAppTC = () => (dispatch: Dispatch) => {
     dispatch(setAppStatusAC('loading'))
     authAPI.me()
@@ -54,11 +46,17 @@ export const initializeAppTC = () => (dispatch: Dispatch) => {
             dispatch(setIsInitializedAC(true))
         })
 }
+//types
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type InitialStateType = {
+    status: RequestStatusType
+    error: string | null
+    isInitialized: boolean
+}
 
 export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>
 export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>
 export type SetIsInitializedActionType = ReturnType<typeof setIsInitializedAC>
-
 
 type ActionsType =
     | SetAppErrorActionType
