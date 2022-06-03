@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/it-incubator-Todolis/static/css/main.e6c13ad2.css",
+    "main.js": "/it-incubator-Todolis/static/js/main.226c3eb0.js",
+    "static/js/787.c3642faf.chunk.js": "/it-incubator-Todolis/static/js/787.c3642faf.chunk.js",
+    "index.html": "/it-incubator-Todolis/index.html",
+    "main.e6c13ad2.css.map": "/it-incubator-Todolis/static/css/main.e6c13ad2.css.map",
+    "main.226c3eb0.js.map": "/it-incubator-Todolis/static/js/main.226c3eb0.js.map",
+    "787.c3642faf.chunk.js.map": "/it-incubator-Todolis/static/js/787.c3642faf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.226c3eb0.js"
+  ]
+}
