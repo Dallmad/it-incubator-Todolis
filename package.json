@@ -1,7 +1,7 @@
 {
   "name": "todo16v2",
   "version": "0.1.0",
-  "homepage": "https://Dallmad.github.io/it-incubator-todolist",
+  "homepage": "https://Dallmad.github.io/it-incubator-Todolist",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
